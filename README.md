@@ -15,5 +15,5 @@ npm install
 ### Start application
 
 ```bash
-ng start
+npm start
 ```
