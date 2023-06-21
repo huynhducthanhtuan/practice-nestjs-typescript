@@ -21,7 +21,7 @@ async function bootstrap() {
 
   await app.listen(PORT);
 
-  const logger = new Logger('DaNaTravel');
+  const logger = new Logger('Logger');
   logger.log(`Application is running on http://${HOST}:${PORT}`);
   logger.log(`Swagger Documentation is running on http://${HOST}:${PORT}/api-docs`);
 }
