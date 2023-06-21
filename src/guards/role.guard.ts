@@ -1,7 +1,7 @@
 import { ExecutionContext, Injectable } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { AuthGuard } from '@nestjs/passport';
-import { Auth } from 'src/core/decorator';
+import { Auth } from 'src/decorators';
 import { Role } from 'src/utils';
 
 @Injectable()

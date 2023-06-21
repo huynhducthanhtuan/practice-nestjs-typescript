@@ -1,4 +1,4 @@
-import { ConfigService } from '../config';
+import { ConfigService } from '../configs';
 
 const config = ConfigService.getInstance();
 

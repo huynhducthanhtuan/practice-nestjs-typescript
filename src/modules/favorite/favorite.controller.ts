@@ -1,19 +1,6 @@
-import {
-  Controller,
-  Delete,
-  Body,
-  Post,
-  BadRequestException,
-  Param,
-  Get,
-  Query,
-  UseGuards,
-  UnauthorizedException,
-} from '@nestjs/common';
-import { ObjectId } from 'mongoose';
-import { FavoriteDto } from './dto';
+import { Controller, Delete, BadRequestException, Param, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/guards/jwt.guard';
-import { GetAuth, Auth, Roles } from '../../core/decorator';
+import { GetAuth, Auth } from '../../decorators';
 import { FavoriteService } from './favorite.service';
 import { PATH_CONTAIN_ID } from 'src/constants';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
