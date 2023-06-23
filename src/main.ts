@@ -1,9 +1,10 @@
 import { HOST, PORT } from './constants';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { LoggingInterceptor } from './configs/logger';
+import { SwaggerModule } from '@nestjs/swagger';
 import { Logger, ValidationPipe } from '@nestjs/common';
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { SwaggerConfig } from './configs/swagger.config';
+import { LoggingInterceptor } from './configs/logger.config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -11,14 +12,8 @@ async function bootstrap() {
   app.useGlobalInterceptors(new LoggingInterceptor());
   app.enableCors();
 
-  const swaggerConfig = new DocumentBuilder()
-    .setTitle('SwaggerUI')
-    .setDescription('A Simple Express Library API')
-    .setVersion('1.0.0')
-    .addBearerAuth()
-    .build();
-  const document = SwaggerModule.createDocument(app, swaggerConfig);
-  SwaggerModule.setup('api-docs', app, document);
+  const swaggerDocument = SwaggerConfig.getConfig(app);
+  SwaggerModule.setup('api-docs', app, swaggerDocument);
 
   await app.listen(PORT);
 

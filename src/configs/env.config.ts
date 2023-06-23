@@ -1,14 +1,15 @@
 import { config } from 'dotenv';
 
-export class ConfigService {
-  private static _instance: ConfigService;
+export class EnvConfig {
+  private static _instance: EnvConfig;
+
   constructor() {
     config({ path: '.env' });
   }
 
   static getInstance() {
     if (this._instance) return this._instance;
-    this._instance = new ConfigService();
+    this._instance = new EnvConfig();
     return this._instance;
   }
 

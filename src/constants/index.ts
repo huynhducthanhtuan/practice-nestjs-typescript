@@ -1,6 +1,6 @@
-import { ConfigService } from '../configs';
+import { EnvConfig } from '../configs/env.config';
 
-const config = ConfigService.getInstance();
+const config = EnvConfig.getInstance();
 
 export const PORT = config.getNumber('PORT') || 3000;
 export const HOST = config.get('HOST') || 'localhost';
