@@ -1,33 +1,33 @@
 import { Model } from 'mongoose';
+import { CreateProductDto } from './dto';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Product, ProductDocument } from 'src/schemas/product';
-import { CreateProductDto } from './dto';
+import { Product, ProductDocument } from 'src/schemas/product.schema';
 
 @Injectable()
 export class ProductService {
   constructor(
     @InjectModel(Product.name)
-    private readonly productRepo: Model<ProductDocument>,
+    private readonly productRepository: Model<ProductDocument>
   ) {}
 
   async getAllProducts() {
-    return await this.productRepo.find({});
+    return await this.productRepository.find({});
   }
 
   async getProductById(productId: string) {
-    return await this.productRepo.findOne({ productId: productId });
+    return await this.productRepository.findOne({ productId: productId });
   }
 
   async createProduct(product: CreateProductDto) {
-    return await this.productRepo.create(product);
+    return await this.productRepository.create(product);
   }
 
   async updateProduct(productId: string, product: CreateProductDto) {
-    return await this.productRepo.findOneAndUpdate({ productId: productId }, product, { new: true });
+    return await this.productRepository.findOneAndUpdate({ productId: productId }, product, { new: true });
   }
 
   async deleteProduct(productId: string) {
-    return await this.productRepo.findOneAndDelete({ productId: productId });
+    return await this.productRepository.findOneAndDelete({ productId: productId });
   }
 }

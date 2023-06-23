@@ -1,7 +1,7 @@
-import { Controller, Get, BadRequestException, Param, Body, Post, Patch, Delete } from '@nestjs/common';
+import { CreateProductDto } from './dto';
 import { ProductService } from './product.service';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
-import { CreateProductDto } from './dto';
+import { Controller, Get, BadRequestException, Param, Body, Post, Patch, Delete } from '@nestjs/common';
 
 @ApiTags('Products')
 @Controller('/product')
@@ -15,7 +15,7 @@ export class ProductController {
     if (!products) throw new BadRequestException({ message: 'Bad Request', data: null });
     return {
       message: 'Success',
-      data: products,
+      data: products
     };
   }
 
@@ -26,7 +26,7 @@ export class ProductController {
     if (!product) throw new BadRequestException({ message: 'Bad Request', data: null });
     return {
       message: 'Success',
-      data: product,
+      data: product
     };
   }
 
@@ -37,7 +37,7 @@ export class ProductController {
     if (!createdProduct) throw new BadRequestException({ message: 'Bad Request', data: null });
     return {
       message: 'Success',
-      data: createdProduct,
+      data: createdProduct
     };
   }
 
@@ -48,7 +48,7 @@ export class ProductController {
     if (!updatedProduct) throw new BadRequestException({ message: 'Bad Request', data: null });
     return {
       message: 'Success',
-      data: updatedProduct,
+      data: updatedProduct
     };
   }
 
@@ -59,7 +59,7 @@ export class ProductController {
     if (!updatedProduct) throw new BadRequestException({ message: 'Bad Request', data: null });
     return {
       message: 'Success',
-      data: updatedProduct,
+      data: updatedProduct
     };
   }
 }
