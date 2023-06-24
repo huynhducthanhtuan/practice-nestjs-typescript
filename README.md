@@ -1,5 +1,10 @@
 ## Practice NestJS TypeScript
 
+### Clone repository
+```bash
+git clone https://github.com/huynhducthanhtuan/practice-nestjs-typescript.git
+```
+
 ### Change directory to folder practice-nestjs-typescript
 
 ```bash
