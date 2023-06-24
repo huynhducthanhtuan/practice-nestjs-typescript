@@ -1,5 +1,10 @@
 import { UserRole, UserStatus, ProductStatus, OrderStatus } from './types';
 
+export interface UserForLogin {
+  phoneNumber: string;
+  password: string;
+}
+
 export interface UserForRegister {
   email: string;
   password: string;

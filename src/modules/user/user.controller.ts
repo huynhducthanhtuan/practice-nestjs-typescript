@@ -1,12 +1,23 @@
 import { UserService } from './user.service';
-import { CreateUserDto, UpdateUserDto } from './dto';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
+import { CreateUserDto, LoginDto, UpdateUserDto } from './dto';
 import { Controller, Get, BadRequestException, Param, Body, Post, Patch, Delete } from '@nestjs/common';
 
 @ApiTags('Users')
 @Controller('/user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
+
+  @ApiOperation({ summary: 'Login' })
+  @Post('/login')
+  async login(@Body() user: LoginDto) {
+    const loginInfo = await this.userService.login(user);
+    if (!loginInfo) throw new BadRequestException({ message: 'Bad Request', data: null });
+    return {
+      message: 'Success',
+      data: loginInfo
+    };
+  }
 
   @ApiOperation({ summary: 'Get All Users' })
   @Get('/all')

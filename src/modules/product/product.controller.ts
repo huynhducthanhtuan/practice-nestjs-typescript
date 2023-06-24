@@ -1,7 +1,22 @@
+import { UserRole } from 'src/utils';
 import { CreateProductDto } from './dto';
+import { Auth, GetAuth } from 'src/decorators';
+import { JwtAuthGuard } from 'src/guards/jwt.guard';
 import { ProductService } from './product.service';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
-import { Controller, Get, BadRequestException, Param, Body, Post, Patch, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  BadRequestException,
+  Param,
+  Body,
+  Post,
+  Patch,
+  Delete,
+  UseGuards,
+  UnauthorizedException,
+  Logger
+} from '@nestjs/common';
 
 @ApiTags('Products')
 @Controller('/product')
@@ -9,8 +24,15 @@ export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
   @ApiOperation({ summary: 'Get All Products' })
+  @UseGuards(JwtAuthGuard)
   @Get('/all')
-  async getAllProducts() {
+  async getAllProducts(@GetAuth() auth: Auth) {
+    const logger = new Logger('Logger');
+    logger.log(`auth`, auth);
+
+    if (auth.role !== UserRole.MANUFACTURER)
+      throw new UnauthorizedException({ message: 'You do not have permission to perform this action', data: null });
+
     const products = await this.productService.getAllProducts();
     if (!products) throw new BadRequestException({ message: 'Bad Request', data: null });
     return {
