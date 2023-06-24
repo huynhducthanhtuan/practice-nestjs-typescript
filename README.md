@@ -1,6 +1,7 @@
 ## Practice NestJS TypeScript
 
 ### Clone repository
+
 ```bash
 git clone https://github.com/huynhducthanhtuan/practice-nestjs-typescript.git
 ```
@@ -21,4 +22,14 @@ npm install
 
 ```bash
 npm start
+```
+
+### Run by using Docker
+
+```bash
+docker-compose build
+```
+
+```bash
+docker-compose up -d
 ```
