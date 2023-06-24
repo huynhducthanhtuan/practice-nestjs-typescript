@@ -32,7 +32,7 @@ export class ProductCommercial {
   @Prop({ type: String })
   unit: string;
 
-  @Prop({ type: String })
+  @Prop({ type: String, default: 'EXPORTED' })
   status: ProductStatus;
 
   @Prop({ type: String })
