@@ -14,8 +14,7 @@ import {
   Patch,
   Delete,
   UseGuards,
-  UnauthorizedException,
-  Logger
+  UnauthorizedException
 } from '@nestjs/common';
 
 @ApiTags('Products')
@@ -27,10 +26,7 @@ export class ProductController {
   @UseGuards(JwtAuthGuard)
   @Get('/all')
   async getAllProducts(@GetAuth() auth: Auth) {
-    const logger = new Logger('Logger');
-    logger.log(`auth`, auth);
-
-    if (auth.role !== UserRole.MANUFACTURER)
+    if (auth.role !== UserRole.SUPPLIER && auth.role !== UserRole.MANUFACTURER && auth.role !== UserRole.RETAILER)
       throw new UnauthorizedException({ message: 'You do not have permission to perform this action', data: null });
 
     const products = await this.productService.getAllProducts();
@@ -42,8 +38,12 @@ export class ProductController {
   }
 
   @ApiOperation({ summary: 'Get Product By Id' })
+  @UseGuards(JwtAuthGuard)
   @Get('/:productId')
-  async getProductById(@Param('productId') productId: string) {
+  async getProductById(@Param('productId') productId: string, @GetAuth() auth: Auth) {
+    if (auth.role !== UserRole.SUPPLIER && auth.role !== UserRole.MANUFACTURER && auth.role !== UserRole.RETAILER)
+      throw new UnauthorizedException({ message: 'You do not have permission to perform this action', data: null });
+
     const product = await this.productService.getProductById(productId);
     if (!product) throw new BadRequestException({ message: 'Bad Request', data: null });
     return {
@@ -53,8 +53,12 @@ export class ProductController {
   }
 
   @ApiOperation({ summary: 'Create Product' })
+  @UseGuards(JwtAuthGuard)
   @Post('/')
-  async createProduct(@Body() product: CreateProductDto) {
+  async createProduct(@Body() product: CreateProductDto, @GetAuth() auth: Auth) {
+    if (auth.role !== UserRole.SUPPLIER)
+      throw new UnauthorizedException({ message: 'You do not have permission to perform this action', data: null });
+
     const createdProduct = await this.productService.createProduct(product);
     if (!createdProduct) throw new BadRequestException({ message: 'Bad Request', data: null });
     return {
@@ -64,8 +68,12 @@ export class ProductController {
   }
 
   @ApiOperation({ summary: 'Update Product' })
+  @UseGuards(JwtAuthGuard)
   @Patch('/:productId')
-  async updateProduct(@Param('productId') productId: string, @Body() product: CreateProductDto) {
+  async updateProduct(@Param('productId') productId: string, @Body() product: CreateProductDto, @GetAuth() auth: Auth) {
+    if (auth.role !== UserRole.SUPPLIER && auth.role !== UserRole.MANUFACTURER)
+      throw new UnauthorizedException({ message: 'You do not have permission to perform this action', data: null });
+
     const updatedProduct = await this.productService.updateProduct(productId, product);
     if (!updatedProduct) throw new BadRequestException({ message: 'Bad Request', data: null });
     return {
@@ -75,8 +83,12 @@ export class ProductController {
   }
 
   @ApiOperation({ summary: 'Delete Product' })
+  @UseGuards(JwtAuthGuard)
   @Delete('/:productId')
-  async deleteProduct(@Param('productId') productId: string) {
+  async deleteProduct(@Param('productId') productId: string, @GetAuth() auth: Auth) {
+    if (auth.role !== UserRole.SUPPLIER && auth.role !== UserRole.MANUFACTURER)
+      throw new UnauthorizedException({ message: 'You do not have permission to perform this action', data: null });
+
     const updatedProduct = await this.productService.deleteProduct(productId);
     if (!updatedProduct) throw new BadRequestException({ message: 'Bad Request', data: null });
     return {
