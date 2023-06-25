@@ -9,3 +9,5 @@ export const EXPIRES_IN = config.getNumber('EXPIRES_IN');
 export const REFRESH_EXPIRES_IN = config.getNumber('REFRESH_EXPIRES_IN');
 export const JWT_SECRET_KEY = config.get('JWT_SECRET_KEY');
 export const JWT_REFRESH_SECRET_KEY = config.get('JWT_REFRESH_SECRET_KEY');
+
+export const ALL_USERS_CACHE_KEY = 'ALL_USERS';
