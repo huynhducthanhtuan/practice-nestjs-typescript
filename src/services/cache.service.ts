@@ -3,11 +3,9 @@ import { CACHE_MANAGER, Inject, Injectable, Logger } from '@nestjs/common';
 
 @Injectable()
 export class CacheService {
-  private readonly logger: Logger;
+  private readonly logger = new Logger(CacheService.name);
 
-  constructor(@Inject(CACHE_MANAGER) private readonly cacheManager: Cache) {
-    this.logger = new Logger('Logger');
-  }
+  constructor(@Inject(CACHE_MANAGER) private readonly cacheManager: Cache) {}
 
   async get(key: string): Promise<any> {
     return this.cacheManager.get(key);
