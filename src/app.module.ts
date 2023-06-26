@@ -7,6 +7,7 @@ import { cacheConfig } from 'src/configs/cache.config';
 import { ScheduleService } from 'src/services/schedule.service';
 import { UserModule } from './modules/user/user.module';
 import { ProductModule } from './modules/product/product.module';
+import { FileStreamingModule } from './modules/filestreaming/filestreaming.module';
 import { TransactionHistoryModule } from './modules/transactionhistory/transactionhistory.module';
 
 @Module({
@@ -17,7 +18,8 @@ import { TransactionHistoryModule } from './modules/transactionhistory/transacti
     ScheduleModule.forRoot(),
     ProductModule,
     UserModule,
-    TransactionHistoryModule
+    TransactionHistoryModule,
+    FileStreamingModule
   ],
   controllers: [],
   providers: [ScheduleService]

@@ -20,6 +20,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@nestjs/bull": "^10.0.0",
     "@nestjs/common": "^9.0.0",
     "@nestjs/config": "^2.3.1",
     "@nestjs/core": "^9.0.0",
@@ -31,6 +32,7 @@
     "@types/uuid": "^9.0.2",
     "axios": "^1.4.0",
     "bcryptjs": "^2.4.3",
+    "bull": "^4.10.4",
     "cache-manager": "^5.2.3",
     "cache-manager-ioredis": "^2.1.0",
     "class-validator": "^0.14.0",

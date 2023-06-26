@@ -24,6 +24,12 @@ npm install
 npm start
 ```
 
+### Run Redis server
+
+```bash
+redis-server
+```
+
 ### Run by using Docker
 
 ```bash
