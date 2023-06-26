@@ -5,15 +5,16 @@ import { JwtAuthGuard } from 'src/guards/jwt.guard';
 import { ProductService } from './product.service';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import {
-  Controller,
   Get,
-  BadRequestException,
-  Param,
-  Body,
   Post,
   Patch,
   Delete,
+  Body,
+  Param,
+  HttpCode,
   UseGuards,
+  Controller,
+  BadRequestException,
   UnauthorizedException
 } from '@nestjs/common';
 
@@ -25,6 +26,9 @@ export class ProductController {
   @ApiOperation({ summary: 'Get All Products' })
   @UseGuards(JwtAuthGuard)
   @Get('/all')
+  @HttpCode(200)
+  @HttpCode(400)
+  @HttpCode(401)
   async getAllProducts(@GetAuth() auth: Auth) {
     if (auth.role !== UserRole.SUPPLIER && auth.role !== UserRole.MANUFACTURER && auth.role !== UserRole.RETAILER)
       throw new UnauthorizedException({ message: 'You do not have permission to perform this action', data: null });
@@ -40,6 +44,9 @@ export class ProductController {
   @ApiOperation({ summary: 'Get Product By Id' })
   @UseGuards(JwtAuthGuard)
   @Get('/:productId')
+  @HttpCode(200)
+  @HttpCode(400)
+  @HttpCode(401)
   async getProductById(@Param('productId') productId: string, @GetAuth() auth: Auth) {
     if (auth.role !== UserRole.SUPPLIER && auth.role !== UserRole.MANUFACTURER && auth.role !== UserRole.RETAILER)
       throw new UnauthorizedException({ message: 'You do not have permission to perform this action', data: null });
@@ -55,6 +62,9 @@ export class ProductController {
   @ApiOperation({ summary: 'Create Product' })
   @UseGuards(JwtAuthGuard)
   @Post('/')
+  @HttpCode(200)
+  @HttpCode(400)
+  @HttpCode(401)
   async createProduct(@Body() product: CreateProductDto, @GetAuth() auth: Auth) {
     if (auth.role !== UserRole.SUPPLIER)
       throw new UnauthorizedException({ message: 'You do not have permission to perform this action', data: null });
@@ -70,6 +80,9 @@ export class ProductController {
   @ApiOperation({ summary: 'Update Product' })
   @UseGuards(JwtAuthGuard)
   @Patch('/:productId')
+  @HttpCode(200)
+  @HttpCode(400)
+  @HttpCode(401)
   async updateProduct(@Param('productId') productId: string, @Body() product: CreateProductDto, @GetAuth() auth: Auth) {
     if (auth.role !== UserRole.SUPPLIER && auth.role !== UserRole.MANUFACTURER)
       throw new UnauthorizedException({ message: 'You do not have permission to perform this action', data: null });
@@ -85,6 +98,9 @@ export class ProductController {
   @ApiOperation({ summary: 'Delete Product' })
   @UseGuards(JwtAuthGuard)
   @Delete('/:productId')
+  @HttpCode(200)
+  @HttpCode(400)
+  @HttpCode(401)
   async deleteProduct(@Param('productId') productId: string, @GetAuth() auth: Auth) {
     if (auth.role !== UserRole.SUPPLIER && auth.role !== UserRole.MANUFACTURER)
       throw new UnauthorizedException({ message: 'You do not have permission to perform this action', data: null });

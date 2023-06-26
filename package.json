@@ -27,6 +27,7 @@
     "@nestjs/jwt": "^10.1.0",
     "@nestjs/mongoose": "^9.2.2",
     "@nestjs/passport": "^9.0.3",
+    "@nestjs/platform-fastify": "^10.0.3",
     "@nestjs/schedule": "^3.0.1",
     "@nestjs/swagger": "^7.0.2",
     "@types/uuid": "^9.0.2",
