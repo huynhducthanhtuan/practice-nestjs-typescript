@@ -6,7 +6,7 @@ import { ALL_USERS_CACHE_KEY } from 'src/constants';
 import { CreateUserDto, UpdateUserDto } from './dto';
 import { TokenService } from 'src/services/token.service';
 import { CacheService } from 'src/services/cache.service';
-import { User, UserDocument } from 'src/schemas/user.schema';
+import { User, UserDocument } from 'src/schemas/mongodb/user.schema';
 
 @Injectable()
 export class UserService {

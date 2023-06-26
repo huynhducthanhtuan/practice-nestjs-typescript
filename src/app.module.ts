@@ -7,6 +7,7 @@ import { cacheConfig } from 'src/configs/cache.config';
 import { ScheduleService } from 'src/services/schedule.service';
 import { UserModule } from './modules/user/user.module';
 import { ProductModule } from './modules/product/product.module';
+import { TransactionHistoryModule } from './modules/transactionhistory/transactionhistory.module';
 
 @Module({
   imports: [
@@ -15,7 +16,8 @@ import { ProductModule } from './modules/product/product.module';
     CacheModule.register(cacheConfig),
     ScheduleModule.forRoot(),
     ProductModule,
-    UserModule
+    UserModule,
+    TransactionHistoryModule
   ],
   controllers: [],
   providers: [ScheduleService]

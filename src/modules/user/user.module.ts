@@ -2,7 +2,7 @@ import { CacheModule, Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UserService } from './user.service';
 import { UserController } from './user.controller';
-import { User, UserSchema } from 'src/schemas/user.schema';
+import { User, UserSchema } from 'src/schemas/mongodb/user.schema';
 import { TokenService } from 'src/services/token.service';
 import { CacheService } from 'src/services/cache.service';
 import { JwtModule, JwtService } from '@nestjs/jwt';
