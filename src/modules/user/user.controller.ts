@@ -1,10 +1,14 @@
+import { Request } from 'express';
 import { UserRole } from 'src/utils';
 import { UserService } from './user.service';
 import { Auth, GetAuth } from 'src/decorators';
+import { TokenPayload } from 'src/types/models';
 import { JwtAuthGuard } from 'src/guards/jwt.guard';
+import { RefreshAuthGuard } from 'src/guards/refresh.guard';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import { CreateUserDto, LoginDto, UpdateUserDto } from './dto';
 import {
+  Req,
   Get,
   Body,
   Post,
@@ -13,10 +17,10 @@ import {
   Param,
   UseGuards,
   Controller,
-  BadRequestException,
-  UnauthorizedException,
+  HttpCode,
   NotFoundException,
-  HttpCode
+  BadRequestException,
+  UnauthorizedException
 } from '@nestjs/common';
 
 @ApiTags('Users')
@@ -34,6 +38,28 @@ export class UserController {
     return {
       message: 'Success',
       data: loginInfo
+    };
+  }
+
+  @ApiOperation({ summary: 'Refresh Token' })
+  @UseGuards(RefreshAuthGuard)
+  @Post('/refresh-token')
+  @HttpCode(200)
+  @HttpCode(400)
+  @HttpCode(500)
+  async refreshToken(@Req() req: Request) {
+    const tokenPayload = req.user as TokenPayload;
+    const output = await this.userService.refreshToken(tokenPayload);
+
+    if (output === null)
+      throw new NotFoundException({
+        message: 'User not found',
+        data: null
+      });
+
+    return {
+      message: 'Success',
+      data: output
     };
   }
 

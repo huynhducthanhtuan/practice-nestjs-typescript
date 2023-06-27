@@ -1,9 +1,9 @@
 import { Model } from 'mongoose';
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { UserForLogin } from 'src/types/models';
+import { TokenPayload, UserForLogin } from 'src/types/models';
 import { ALL_USERS_CACHE_KEY } from 'src/constants';
-import { CreateUserDto, UpdateUserDto } from './dto';
+import { CreateUserDto, RefreshTokenDto, UpdateUserDto } from './dto';
 import { TokenService } from 'src/services/token.service';
 import { CacheService } from 'src/services/cache.service';
 import { User, UserDocument } from 'src/schemas/mongodb/user.schema';
@@ -30,6 +30,24 @@ export class UserService {
     };
     const token = await this.tokenService.generateAccessToken(payload);
     return token;
+  }
+
+  async refreshToken(tokenPayload: TokenPayload) {
+    const user = await this.userRepository.findOne({ userId: tokenPayload.userId }).lean();
+
+    if (user) {
+      const payload = {
+        userId: user.userId,
+        userName: user.userName,
+        role: user.role,
+        phoneNumber: user.phoneNumber
+      };
+
+      const tokens = await this.tokenService.generateTokens(payload);
+      return tokens;
+    } else {
+      return null;
+    }
   }
 
   async getAllUsers() {

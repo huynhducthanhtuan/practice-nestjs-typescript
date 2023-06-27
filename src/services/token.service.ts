@@ -1,6 +1,6 @@
 import { JwtService } from '@nestjs/jwt';
-import { Injectable } from '@nestjs/common';
-import { TokenPayload } from 'src/types/common';
+import { Injectable, Logger } from '@nestjs/common';
+import { TokenPayload } from 'src/types/models';
 import { EXPIRES_IN, JWT_SECRET_KEY, REFRESH_EXPIRES_IN, JWT_REFRESH_SECRET_KEY } from 'src/constants';
 
 @Injectable()
@@ -25,7 +25,7 @@ export class TokenService {
     return refreshToken;
   }
 
-  async generateToken(payload: TokenPayload) {
+  async generateTokens(payload: TokenPayload) {
     const [token, refreshToken] = await Promise.all([
       this.generateAccessToken(payload),
       this.generateRefreshToken(payload)

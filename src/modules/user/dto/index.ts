@@ -12,6 +12,12 @@ export class LoginDto {
   password: string;
 }
 
+export class RefreshTokenDto {
+  @ApiProperty({ type: String })
+  @IsString()
+  accessToken: string;
+}
+
 export class CreateUserDto {
   @ApiProperty({ type: String })
   @IsEmail()

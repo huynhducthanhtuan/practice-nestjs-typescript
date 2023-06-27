@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
-import { TokenPayload } from 'src/types/common';
+import { TokenPayload } from 'src/types/models';
 import { JWT_REFRESH_SECRET_KEY } from 'src/constants';
 
 @Injectable()

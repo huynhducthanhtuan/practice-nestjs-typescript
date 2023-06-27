@@ -1,5 +1,12 @@
 import { UserRole, UserStatus, ProductStatus, OrderStatus } from './types';
 
+export type TokenPayload = {
+  role: UserRole;
+  userId: string;
+  userName: string;
+  phoneNumber: string;
+};
+
 export interface UserForLogin {
   phoneNumber: string;
   password: string;
