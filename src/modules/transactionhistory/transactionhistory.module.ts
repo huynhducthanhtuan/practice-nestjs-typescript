@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { TokenService } from 'src/services/token.service';
 import { JwtModule, JwtService } from '@nestjs/jwt';
 import { JwtStategy } from 'src/strategies/jwt.strategy';
+import { TokenService } from 'src/services/token.service';
 import { TransactionHistoryService } from './transactionhistory.service';
 import { TransactionHistoryController } from './transactionhistory.controller';
 

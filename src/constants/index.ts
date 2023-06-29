@@ -1,6 +1,6 @@
 import { EnvConfig } from '../configs/env.config';
 
-const config = EnvConfig.getInstance();
+const config = new EnvConfig();
 
 export const PORT = config.getNumber('PORT') || 5000;
 export const HOST = config.get('HOST') || 'localhost';

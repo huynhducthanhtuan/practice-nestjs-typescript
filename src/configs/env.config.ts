@@ -7,12 +7,6 @@ export class EnvConfig {
     config({ path: '.env' });
   }
 
-  static getInstance() {
-    if (this._instance) return this._instance;
-    this._instance = new EnvConfig();
-    return this._instance;
-  }
-
   public get(key: string): string {
     return process.env[key];
   }
