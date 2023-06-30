@@ -2,37 +2,37 @@
 
 ### Installation Guide
 
-#### Clone repository
+#### 1. Clone repository
 
 ```bash
 git clone https://github.com/huynhducthanhtuan/practice-nestjs-typescript.git
 ```
 
-#### Change directory to folder practice-nestjs-typescript
+#### 2. Change directory to folder practice-nestjs-typescript
 
 ```bash
 cd practice-nestjs-typescript
 ```
 
-#### Install npm packages
+#### 3. Install npm packages
 
 ```bash
 npm install
 ```
 
-#### Start application
+#### 4. Start application
 
 ```bash
 npm start
 ```
 
-#### Run Redis server
+#### 5. Run Redis server (optional)
 
 ```bash
 redis-server
 ```
 
-#### Run by using Docker
+#### 6. Run by using Docker (optional)
 
 ```bash
 docker-compose build
@@ -44,10 +44,5 @@ docker-compose up -d
 
 ### Reference Resources
 
-#### NestJS Documentation
-
-[NestJS](https://docs.nestjs.com/)
-
-#### Deploy Project To AWS Lambda Function
-
-[Deploy AWS Lambda](https://kuros.in/nestjs/deploy-nestjs-application-on-aws-lambda/)
+[NestJS Documentation](https://docs.nestjs.com/)
+[Deploy Project To AWS Lambda Function](https://kuros.in/nestjs/deploy-nestjs-application-on-aws-lambda/)
