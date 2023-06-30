@@ -1,12 +1,14 @@
+import axios from 'axios';
+import { SEARCH_HISTORY_API } from 'src/constants';
 import { Injectable, Logger } from '@nestjs/common';
 
 @Injectable()
 export class ScheduleService {
   private readonly logger = new Logger(ScheduleService.name);
 
-  fetchDataAndUpdateDatabase() {
+  async fetchData() {
     // Fetch data from the external API
-    // Update the database with the fetched data
-    this.logger.log('Data fetching and database update complete!');
+    const fetchData = await axios.get(SEARCH_HISTORY_API);
+    this.logger.log('Data fetching complete!', fetchData.data);
   }
 }

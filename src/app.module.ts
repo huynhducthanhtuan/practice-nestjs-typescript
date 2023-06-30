@@ -28,8 +28,8 @@ export class AppModule {
   constructor(private readonly scheduleService: ScheduleService) {}
 
   // Run every minute
-  @Cron('* * * * *')
+  @Cron('*/10 * * * *')
   handleDataFetchingTask() {
-    this.scheduleService.fetchDataAndUpdateDatabase();
+    this.scheduleService.fetchData();
   }
 }
