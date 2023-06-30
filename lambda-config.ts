@@ -1,8 +1,10 @@
-module.exports = {
-  region: 'us-west-2',
+import { AWS_LAMBDA_ROLE } from 'src/constants';
+
+export default {
+  region: 'ap-southeast-1',
   handler: 'index.handler',
-  role: 'arn:aws:iam::xxxxxxxxxxxx:role/lambda_s3_exec_role',
-  functionName: 'gulpSample',
+  role: AWS_LAMBDA_ROLE,
+  functionName: 'handler',
   timeout: 10,
-  nodejs: '16.10.x'
+  nodejs: '16.16.0'
 };
