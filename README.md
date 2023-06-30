@@ -45,4 +45,7 @@ docker-compose up -d
 ### Reference Resources
 
 [NestJS Documentation](https://docs.nestjs.com/)
+
+</br>
+
 [Deploy Project To AWS Lambda Function](https://kuros.in/nestjs/deploy-nestjs-application-on-aws-lambda/)
