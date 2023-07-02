@@ -11,5 +11,7 @@ export const JWT_SECRET_KEY = config.get('JWT_SECRET_KEY');
 export const JWT_REFRESH_SECRET_KEY = config.get('JWT_REFRESH_SECRET_KEY');
 export const AWS_LAMBDA_ROLE = config.get('AWS_LAMBDA_ROLE');
 export const SEARCH_HISTORY_API = config.get('SEARCH_HISTORY_API');
+export const FIREBASE_STORAGE_BUCKET_LINK = config.get('FIREBASE_STORAGE_BUCKET_LINK');
+export const STORAGE_FILE_EXPIRE_DAY = config.get('STORAGE_FILE_EXPIRE_DAY');
 
 export const ALL_USERS_CACHE_KEY = 'ALL_USERS';

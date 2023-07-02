@@ -42,3 +42,6 @@ lerna-debug.log*
 
 # Doployed folder of Serverless Framework
 .serverless/
+
+# Firebase service account file
+firebase-service-account.json
