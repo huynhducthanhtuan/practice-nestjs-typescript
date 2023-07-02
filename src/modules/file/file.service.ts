@@ -1,7 +1,7 @@
-import firebaseAdmin from 'src/configs/firebase.config';
 import { File } from 'multer';
 import { Injectable } from '@nestjs/common';
 import { STORAGE_FILE_EXPIRE_DAY } from 'src/constants';
+import { firebaseAdmin } from 'src/configs/firebase.config';
 
 @Injectable()
 export class FileService {

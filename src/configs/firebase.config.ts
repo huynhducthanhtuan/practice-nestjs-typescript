@@ -7,4 +7,4 @@ firebaseAdmin.initializeApp({
   storageBucket: FIREBASE_STORAGE_BUCKET_LINK
 });
 
-export default firebaseAdmin;
+export { firebaseAdmin };

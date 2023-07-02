@@ -1,8 +1,6 @@
 import { config } from 'dotenv';
 
 export class EnvConfig {
-  private static _instance: EnvConfig;
-
   constructor() {
     config({ path: '.env' });
   }
