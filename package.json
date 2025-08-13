@@ -33,7 +33,7 @@
     "@types/uuid": "^9.0.2",
     "@vendia/serverless-express": "^4.10.4",
     "aws-lambda": "^1.0.7",
-    "axios": "^1.4.0",
+    "axios": "^1.11.0",
     "bcryptjs": "^2.4.3",
     "bull": "^4.10.4",
     "cache-manager": "^5.2.3",
