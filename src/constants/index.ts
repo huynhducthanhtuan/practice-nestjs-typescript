@@ -13,5 +13,7 @@ export const AWS_LAMBDA_ROLE = config.get('AWS_LAMBDA_ROLE');
 export const SEARCH_HISTORY_API = config.get('SEARCH_HISTORY_API');
 export const FIREBASE_STORAGE_BUCKET_LINK = config.get('FIREBASE_STORAGE_BUCKET_LINK');
 export const STORAGE_FILE_EXPIRE_DAY = config.get('STORAGE_FILE_EXPIRE_DAY');
-
+export const FIREBASE_PROJECT_ID = config.get('FIREBASE_PROJECT_ID');
+export const FIREBASE_PRIVATE_KEY = config.get('FIREBASE_PRIVATE_KEY');
+export const FIREBASE_CLIENT_EMAIL = config.get('FIREBASE_CLIENT_EMAIL');
 export const ALL_USERS_CACHE_KEY = 'ALL_USERS';

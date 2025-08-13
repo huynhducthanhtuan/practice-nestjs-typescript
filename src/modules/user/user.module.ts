@@ -1,5 +1,6 @@
 import { MongooseModule } from '@nestjs/mongoose';
-import { CacheModule, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
+import { CacheModule } from '@nestjs/cache-manager';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
 import { TokenService } from 'src/services/token.service';

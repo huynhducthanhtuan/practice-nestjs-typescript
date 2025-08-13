@@ -1,5 +1,6 @@
 import { Cache } from 'cache-manager';
-import { CACHE_MANAGER, Inject, Injectable, Logger } from '@nestjs/common';
+import { Inject, Injectable, Logger } from '@nestjs/common';
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
 
 @Injectable()
 export class CacheService {
@@ -20,7 +21,7 @@ export class CacheService {
   }
 
   async viewCacheData() {
-    const cacheStore = this.cacheManager.store;
+    const cacheStore = (this.cacheManager as any).store;
     const keys = await cacheStore.keys();
 
     for (const key of keys) {
