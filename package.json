@@ -76,7 +76,7 @@
     "prettier": "^2.3.2",
     "serverless": "^3.33.0",
     "serverless-jetpack": "^0.11.2",
-    "serverless-offline": "^12.0.4",
+    "serverless-offline": "^14.4.0",
     "supertest": "^6.1.3",
     "ts-jest": "29.0.3",
     "ts-loader": "^9.2.3",
